@@ -13,6 +13,13 @@ Set to the name of a compiler extension symbol to use instead of trying to detec
 
 mark_as_advanced(CHECK_TYPE_ALIGN_FALLBACK_CAST_TYPE CHECK_TYPE_ALIGN_USE_EXTENSION)
 
+function(_check_type_align_assert_identifier var)
+  string(MAKE_C_IDENTIFIER "${var}" identifier)
+  if(NOT identifier STREQUAL var)
+    message(FATAL_ERROR "'${var}' is not a valid C identifier")
+  endif()
+endfunction()
+
 macro(_check_type_align_parse_args)
   set(_CHECK_TYPE_ALIGN_BUILTIN_TYPES_ONLY 0)
   unset(_cta_doing)
@@ -222,6 +229,7 @@ function(_check_type_align_code var)
 endfunction()
 
 macro(check_type_align type variable)
+  _check_type_align_assert_identifier("${variable}")
   _check_type_align_parse_args(${ARGN})
   _check_type_align_lang()
 
