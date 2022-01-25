@@ -126,6 +126,16 @@ int main()
   NODEF(ALIGNOF_SSIZE_T);
 #endif
 
+/* bool */
+#if defined(ALIGNOF_BOOL)
+  CHECK(bool, ALIGNOF_BOOL);
+#  if !defined(HAVE_ALIGNOF_BOOL)
+  NODEF(HAVE_ALIGNOF_BOOL);
+#  endif
+#elif defined(HAVE_ALIGNOF_BOOL)
+  NODEF(ALIGNOF_BOOL);
+#endif
+
 /* uint8_t */
 #if defined(ALIGNOF_UINT8_T)
   CHECK(uint8_t, ALIGNOF_UINT8_T);
