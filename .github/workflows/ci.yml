@@ -19,6 +19,6 @@ jobs:
     - uses: actions/upload-artifact@v2
       if: always()
       with:
-        name: CTest-results
+        name: CTest-results-${{ matrix.os }}
         path: build/Testing/
         if-no-files-found: error
