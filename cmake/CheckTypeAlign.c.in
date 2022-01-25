@@ -29,7 +29,7 @@
 #elif __STDC_VERSION__ >= 201112L
 # define ALIGN (_Alignof(@type@))
 #endif
-
+@use_extension@
 /*
  * Compiler specific
  * TODO: add more compilers with versions checks where necessary
