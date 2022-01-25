@@ -43,5 +43,12 @@ if(NOT CMAKE_SKIP_INSTALL_RULES)
 endif()
 
 if(CheckTypeAlign_IS_TOP_LEVEL AND CheckTypeAlign_DEVELOPER_MODE)
-  # TODO: add tests
+  include(CTest)
+  if(BUILD_TESTING)
+    foreach(f IN ITEMS .c.in Config.cmake Map.cmake.in)
+      configure_file("cmake/CheckTypeAlign${f}" "CheckTypeAlign${f}" COPYONLY)
+    endforeach()
+    list(APPEND CMAKE_PREFIX_PATH "${PROJECT_BINARY_DIR}")
+    add_subdirectory(test)
+  endif()
 endif()

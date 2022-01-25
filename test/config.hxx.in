@@ -1,0 +1,17 @@
+#cmakedefine HAVE_SYS_TYPES_H
+#cmakedefine HAVE_STDINT_H
+#cmakedefine HAVE_STDDEF_H
+#cmakedefine HAVE_CSTDINT
+#cmakedefine HAVE_CSTDDEF
+
+/* bool */
+#cmakedefine HAVE_ALIGNOF_BOOL
+@ALIGNOF_BOOL_CODE@
+
+/* uint8_t */
+#cmakedefine HAVE_ALIGNOF_UINT8_T
+@ALIGNOF_UINT8_T_CODE@
+
+/* std::uint8_t */
+#cmakedefine HAVE_ALIGNOF_STD_UINT8_T
+@ALIGNOF_STD_UINT8_T_CODE@
