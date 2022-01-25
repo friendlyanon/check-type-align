@@ -1,5 +1,6 @@
 #include "config.h"
 #include "config.hxx"
+#include "someclass.hxx"
 
 #ifdef HAVE_SYS_TYPES_H
 #  include <sys/types.h>
@@ -37,6 +38,7 @@
 int main()
 {
   int result = 0;
+  ns::someclass y;
 
 /* void* */
 #if !defined(HAVE_ALIGNOF_DATA_PTR)
@@ -156,5 +158,52 @@ int main()
   NODEF(ALIGNOF_STD_UINT8_T);
 #endif
 
-  return result;
+/* ns::someclass::someint */
+#if defined(SIZEOF_NS_CLASSMEMBER_INT)
+  CHECK(decltype(y.someint), SIZEOF_NS_CLASSMEMBER_INT);
+  CHECK(decltype(y.someint), SIZEOF_INT);
+#  if !defined(HAVE_SIZEOF_NS_CLASSMEMBER_INT)
+  NODEF(HAVE_SIZEOF_STRUCTMEMBER_INT);
+#  endif
+#elif defined(HAVE_SIZEOF_STRUCTMEMBER_INT)
+  NODEF(SIZEOF_STRUCTMEMBER_INT);
+#endif
+
+/* ns::someclass::someptr */
+#if defined(SIZEOF_NS_CLASSMEMBER_PTR)
+  CHECK(decltype(y.someptr), SIZEOF_NS_CLASSMEMBER_PTR);
+  CHECK(decltype(y.someptr), SIZEOF_DATA_PTR);
+#  if !defined(HAVE_SIZEOF_NS_CLASSMEMBER_PTR)
+  NODEF(HAVE_SIZEOF_NS_CLASSMEMBER_PTR);
+#  endif
+#elif defined(HAVE_SIZEOF_NS_CLASSMEMBER_PTR)
+  NODEF(SIZEOF_NS_CLASSMEMBER_PTR);
+#endif
+
+/* ns::someclass::somechar */
+#if defined(SIZEOF_NS_CLASSMEMBER_CHAR)
+  CHECK(decltype(y.somechar), SIZEOF_NS_CLASSMEMBER_CHAR);
+  CHECK(decltype(y.somechar), SIZEOF_CHAR);
+#  if !defined(HAVE_SIZEOF_NS_CLASSMEMBER_CHAR)
+  NODEF(HAVE_SIZEOF_NS_CLASSMEMBER_CHAR);
+#  endif
+#elif defined(HAVE_SIZEOF_NS_CLASSMEMBER_CHAR)
+  NODEF(SIZEOF_NS_CLASSMEMBER_CHAR);
+#endif
+
+/* ns::someclass::somebool */
+#if defined(SIZEOF_NS_CLASSMEMBER_BOOL)
+  CHECK(decltype(y.somebool), SIZEOF_NS_CLASSMEMBER_BOOL);
+  CHECK(decltype(y.somebool), SIZEOF_BOOL);
+#  if !defined(HAVE_SIZEOF_NS_CLASSMEMBER_BOOL)
+  NODEF(HAVE_SIZEOF_NS_CLASSMEMBER_BOOL);
+#  endif
+#elif defined(HAVE_SIZEOF_NS_CLASSMEMBER_BOOL)
+  NODEF(SIZEOF_NS_CLASSMEMBER_BOOL);
+#endif
+
+  /* to avoid possible warnings about unused or write-only variable */
+  y.someint = result;
+
+  return y.someint;
 }

@@ -15,7 +15,8 @@ The only real difference from [CheckTypeSize][1] is due to the way `alignof` is
 specified by the C++ and C standards; it cannot accept an expression as its
 argument, only a `type-id`. The compiler extensions all support the former,
 however the main target is the standard way, so the tests do not cover
-expressions.
+expressions. In C++ mode, you can still use `decltype` to convert an expression
+to a type.
 
 This module requires CMake >= 3.9.
 
