@@ -134,15 +134,13 @@ function(_check_type_align_impl type var builtin)
   set(link_options "")
   if(NOT CMAKE_VERSION VERSION_LESS "3.14")
     _check_type_align_set(CMAKE_REQUIRED_LINK_OPTIONS)
-    if(NOT CMAKE_REQUIRED_LINK_OPTIONS STREQUAL "")
-      set(link_options LINK_OPTIONS ${CMAKE_REQUIRED_LINK_OPTIONS})
-    endif()
+    set(link_options LINK_OPTIONS "${CMAKE_REQUIRED_LINK_OPTIONS}")
   endif()
 
   try_compile(
       "HAVE_${var}" "${CMAKE_BINARY_DIR}" "${src}"
-      COMPILE_DEFINITIONS "${CMAKE_REQUIRED_DEFINITIONS}"
-      LINK_LIBRARIES "${CMAKE_REQUIRED_LIBRARIES}"
+      COMPILE_DEFINITIONS ${CMAKE_REQUIRED_DEFINITIONS}
+      LINK_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES}
       ${link_options}
       CMAKE_FLAGS
       "-DCOMPILE_DEFINITIONS:STRING=${CMAKE_REQUIRED_FLAGS}"
