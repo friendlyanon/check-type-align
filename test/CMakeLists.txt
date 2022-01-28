@@ -28,6 +28,7 @@ check_type_align(bool ALIGNOF_BOOL LANGUAGE CXX)
 check_type_align(uint8_t ALIGNOF_UINT8_T LANGUAGE CXX)
 check_type_align(std::uint8_t ALIGNOF_STD_UINT8_T LANGUAGE CXX)
 
+set(CMAKE_REQUIRED_INCLUDES "${PROJECT_SOURCE_DIR}")
 set(CMAKE_EXTRA_INCLUDE_FILES someclass.hxx)
 check_type_align("decltype(((ns::someclass*)0)->someint)" SIZEOF_NS_CLASSMEMBER_INT LANGUAGE CXX)
 check_type_align("decltype(((ns::someclass*)0)->someptr)" SIZEOF_NS_CLASSMEMBER_PTR LANGUAGE CXX)
