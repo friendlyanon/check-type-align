@@ -14,11 +14,4 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Test
-      run: ctest -S .github/ctest/${{ matrix.os }}.cmake -V --output-on-failure
-
-    - uses: actions/upload-artifact@v2
-      if: always()
-      with:
-        name: CTest-results-${{ matrix.os }}
-        path: build/Testing/
-        if-no-files-found: error
+      run: ctest -S .github/ctest/${{ matrix.os }}.cmake -VV
