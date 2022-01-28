@@ -11,9 +11,13 @@ set(CTEST_CMAKE_GENERATOR_PLATFORM x64)
 set(CTEST_CONFIGURATION_TYPE Release)
 
 ctest_start(Continuous)
-ctest_configure(OPTIONS "\
+ctest_configure(RETURN_VALUE ret OPTIONS "\
 -DCheckTypeAlign_DEVELOPER_MODE=1;\
 -DCMAKE_C_FLAGS=/wd5105;\
 -DCMAKE_CXX_FLAGS=/wd5105")
-ctest_build()
-ctest_test()
+if(ret EQUAL "0")
+  ctest_build(RETURN_VALUE ret)
+endif()
+if(ret EQUAL "0")
+  ctest_test()
+endif()
