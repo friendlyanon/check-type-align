@@ -14,4 +14,4 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Test
-      run: ctest -S .github/ctest/ci.cmake -VV -Drunner=${{ matrix.os }}
+      run: ctest -S .github/ctest/${{ matrix.os }}.cmake -VV
