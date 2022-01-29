@@ -16,18 +16,18 @@
 #cmakedefine HAVE_ALIGNOF_STD_UINT8_T
 @ALIGNOF_STD_UINT8_T_CODE@
 
-/* struct ns::somestruct::someint */
-#cmakedefine HAVE_SIZEOF_NS_STRUCTMEMBER_INT
-@SIZEOF_NS_STRUCTMEMBER_INT_CODE@
+/* class ns::someclass::someint */
+#cmakedefine HAVE_ALIGNOF_NS_CLASSMEMBER_INT
+@ALIGNOF_NS_CLASSMEMBER_INT_CODE@
 
-/* struct ns::somestruct::someptr */
-#cmakedefine HAVE_SIZEOF_NS_STRUCTMEMBER_PTR
-@SIZEOF_NS_STRUCTMEMBER_PTR_CODE@
+/* class ns::someclass::someptr */
+#cmakedefine HAVE_ALIGNOF_NS_CLASSMEMBER_PTR
+@ALIGNOF_NS_CLASSMEMBER_PTR_CODE@
 
-/* struct ns::somestruct::somechar */
-#cmakedefine HAVE_SIZEOF_NS_STRUCTMEMBER_CHAR
-@SIZEOF_NS_STRUCTMEMBER_CHAR_CODE@
+/* class ns::someclass::somechar */
+#cmakedefine HAVE_ALIGNOF_NS_CLASSMEMBER_CHAR
+@ALIGNOF_NS_CLASSMEMBER_CHAR_CODE@
 
-/* struct ns::somestruct::somebool */
-#cmakedefine HAVE_SIZEOF_NS_STRUCTMEMBER_BOOL
-@SIZEOF_NS_STRUCTMEMBER_BOOL_CODE@
+/* class ns::someclass::somebool */
+#cmakedefine HAVE_ALIGNOF_NS_CLASSMEMBER_BOOL
+@ALIGNOF_NS_CLASSMEMBER_BOOL_CODE@

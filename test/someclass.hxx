@@ -1,5 +1,5 @@
-#ifndef _CMAKE_SOMECLASS_HXX
-#define _CMAKE_SOMECLASS_HXX
+#ifndef SOMECLASS_HXX
+#define SOMECLASS_HXX
 
 namespace ns {
 class someclass
