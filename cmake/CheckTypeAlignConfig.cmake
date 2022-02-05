@@ -15,7 +15,7 @@ mark_as_advanced(CHECK_TYPE_ALIGN_FALLBACK_CAST_TYPE CHECK_TYPE_ALIGN_USE_EXTENS
 
 function(_check_type_align_assert_identifier var)
   string(MAKE_C_IDENTIFIER "${var}" identifier)
-  if(NOT identifier STREQUAL var)
+  if(NOT identifier STREQUAL var OR var STREQUAL "")
     message(FATAL_ERROR "'${var}' is not a valid C identifier")
   endif()
 endfunction()
