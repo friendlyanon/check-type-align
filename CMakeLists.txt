@@ -20,11 +20,15 @@ if(NOT CMAKE_SKIP_INSTALL_RULES)
   include(CMakePackageConfigHelpers)
   include(GNUInstallDirs)
 
+  set(old_CMAKE_SIZEOF_VOID_P "${CMAKE_SIZEOF_VOID_P}")
+  set(CMAKE_SIZEOF_VOID_P "")
+
   write_basic_package_version_file(
       CheckTypeAlignConfigVersion.cmake
       COMPATIBILITY SameMajorVersion
-      ARCH_INDEPENDENT
   )
+
+  set(CMAKE_SIZEOF_VOID_P "${old_CMAKE_SIZEOF_VOID_P}")
 
   set(
       CheckTypeAlign_INSTALL_CMAKEDIR "${CMAKE_INSTALL_DATADIR}/CheckTypeAlign"
