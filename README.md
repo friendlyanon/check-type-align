@@ -20,4 +20,16 @@ to a type.
 
 This module requires CMake >= 3.9.
 
+# Usage
+
+This module is usable and a proper CMake package:
+
+```
+find_package(CheckTypeAlign REQUIRED)
+check_type_align(int ALIGNOF_INT)
+```
+
+Make sure [`find_package`][2] can find it when configuring your project.
+
 [1]: https://cmake.org/cmake/help/latest/module/CheckTypeSize.html
+[2]: https://cmake.org/cmake/help/latest/command/find_package.html#config-mode-search-procedure
