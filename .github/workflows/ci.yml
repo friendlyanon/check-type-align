@@ -15,6 +15,5 @@ jobs:
 
     - name: Test
       shell: pwsh
-      run: ctest
-        -S ".github/ctest/$("${{ matrix.os }}".split("-")[0]).cmake"
-        -VV
+      run: ctest -S .github/ctest/ci.cmake -VV
+        "-Drunner=$("${{ matrix.os }}".split("-")[0])"
