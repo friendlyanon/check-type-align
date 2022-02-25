@@ -6,12 +6,15 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [macos, ubuntu, windows]
+        os: [macos-latest, ubuntu-latest, windows-2022]
 
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Test
-      run: ctest -S .github/ctest/${{ matrix.os }}.cmake -VV
+      shell: pwsh
+      run: ctest
+        -S ".github/ctest/$("${{ matrix.os }}".split("-")[0]).cmake"
+        -VV

@@ -1,0 +1,8 @@
+ctest_start(Continuous)
+ctest_configure(RETURN_VALUE ret OPTIONS -DCheckTypeAlign_DEVELOPER_MODE=1)
+if(ret EQUAL "0")
+  ctest_build(RETURN_VALUE ret)
+endif()
+if(ret EQUAL "0")
+  ctest_test()
+endif()
