@@ -22,7 +22,7 @@ This module requires CMake >= 3.9.
 
 # Usage
 
-This module is usable and a proper CMake package:
+This module is usable as a proper CMake package:
 
 ```
 find_package(CheckTypeAlign REQUIRED)
