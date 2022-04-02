@@ -26,6 +26,10 @@ endif()
 
 if(ret EQUAL "0")
   echo(::group::Test)
-  ctest_test()
+  ctest_test(RETURN_VALUE ret)
   echo(::endgroup::)
+endif()
+
+if(NOT ret EQUAL "0")
+  message(FATAL_ERROR Error)
 endif()
