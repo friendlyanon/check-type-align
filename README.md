@@ -4,7 +4,7 @@ This CMake module works similarly to [CheckTypeSize][1], with the addition of
 the `CHECK_TYPE_ALIGN_USE_EXTENSION` cache variable. This can be set to
 something like `__alignof__` on Clang or `__alignof` on MSVC to skip detection
 or to provide an extension that is not known by the module. Check the
-[`CheckTypeAlign.c.in`](cmake/CheckTypeAlign.c.in#L39) source file for known
+[`CheckTypeAlign.c.in`](cmake/CheckTypeAlign.c.in#L33) source file for known
 compilers and their extensions. If you can help expanding the list, please open
 an issue.
 

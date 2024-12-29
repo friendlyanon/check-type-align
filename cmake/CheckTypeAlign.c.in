@@ -1,9 +1,3 @@
-#ifdef __cplusplus
-# include <cstddef>
-#else
-# include <stddef.h>
-#endif
-
 @headers@
 
 #undef KEY
@@ -55,7 +49,11 @@
 /* Fallback */
 #ifndef ALIGN
 typedef struct { char c; @type@ d; char e; } ALIGN_type;
-# define ALIGN (offsetof(ALIGN_type, e) - sizeof(@type@))
+# ifdef offsetof
+#  define ALIGN (offsetof(ALIGN_type, e) - sizeof(@type@))
+# else
+#  define ALIGN ((char*)&((ALIGN_type*)0)->d - &((ALIGN_type*)0)->c)
+# endif
 #endif
 
 static char info_align[] = {'I','N','F','O',':','a','l','i','g','n','[',
@@ -71,9 +69,9 @@ static char info_align[] = {'I','N','F','O',':','a','l','i','g','n','[',
   '\0'};
 
 #ifdef __CLASSIC_C__
-int main(argc, argv) int argc; char *argv[];
+int main(argc, argv) int argc; char* argv[];
 #else
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 #endif
 {
   int require = 0;
