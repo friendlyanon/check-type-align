@@ -1,3 +1,9 @@
+#ifdef __cplusplus
+# include <cstddef>
+#else
+# include <stddef.h>
+#endif
+
 @headers@
 
 #undef KEY
@@ -30,7 +36,7 @@
 # define ALIGN (_Alignof(@type@))
 #endif
 @use_extension@
-/*
+/**
  * Compiler specific
  * TODO: add more compilers with versions checks where necessary
  */
@@ -46,17 +52,13 @@
 # endif
 #endif
 
-/*
- * Fallback
- * This possibly raises a warning if the value's width changes after casting
- * Not guaranteed to work with "universal" binaries without warnings
- */
+/* Fallback */
 #ifndef ALIGN
-struct ALIGN_type { char c; @type@ d; };
-# define ALIGN ((@fallback_cast_type@)&((struct ALIGN_type *)0)->d)
+typedef struct { char c; @type@ d; char e; } ALIGN_type;
+# define ALIGN (offsetof(ALIGN_type, e) - sizeof(@type@))
 #endif
 
-static char info_align[] =  {'I','N','F','O',':','a','l','i','g','n','[',
+static char info_align[] = {'I','N','F','O',':','a','l','i','g','n','[',
   ('0' + ((ALIGN / 10000) % 10)),
   ('0' + ((ALIGN / 1000) % 10)),
   ('0' + ((ALIGN / 100) % 10)),

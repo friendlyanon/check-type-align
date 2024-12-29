@@ -5,13 +5,10 @@ include(CheckIncludeFileCXX)
 
 get_filename_component(_CheckTypeAlign_DIRECTORY "${CMAKE_CURRENT_LIST_FILE}" DIRECTORY)
 
-set(CHECK_TYPE_ALIGN_FALLBACK_CAST_TYPE "unsigned long long" CACHE STRING "\
-The unsigned type to which a pointer can be cast to without warnings")
-
 set(CHECK_TYPE_ALIGN_USE_EXTENSION "" CACHE STRING "\
 Set to the name of a compiler extension symbol to use instead of trying to detect the compiler")
 
-mark_as_advanced(CHECK_TYPE_ALIGN_FALLBACK_CAST_TYPE CHECK_TYPE_ALIGN_USE_EXTENSION)
+mark_as_advanced(CHECK_TYPE_ALIGN_USE_EXTENSION)
 
 function(_check_type_align_assert_identifier var)
   string(MAKE_C_IDENTIFIER "${var}" identifier)
@@ -94,7 +91,6 @@ macro(_check_type_align_set var)
 endmacro()
 
 function(_check_type_align_impl type var builtin)
-  set(fallback_cast_type "${CHECK_TYPE_ALIGN_FALLBACK_CAST_TYPE}")
   set(use_extension "")
   if(NOT CHECK_TYPE_ALIGN_USE_EXTENSION STREQUAL "")
     set(use_extension "
