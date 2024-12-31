@@ -48,11 +48,12 @@
 
 /* Fallback */
 #ifndef ALIGN
-typedef struct { char c; @type@ d; char e; } ALIGN_type;
+typedef struct { unsigned char c; @type@ d; char e; } ALIGN_type;
 # ifdef offsetof
 #  define ALIGN (offsetof(ALIGN_type, e) - sizeof(@type@))
 # else
-#  define ALIGN ((char*)&((ALIGN_type*)0)->d - &((ALIGN_type*)0)->c)
+static ALIGN_type ALIGN_value;
+#  define ALIGN ((unsigned char*)&ALIGN_value.d - &ALIGN_value.c)
 # endif
 #endif
 
