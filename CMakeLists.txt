@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.9...4.0)
 
 project(
     CheckTypeAlign
-    VERSION 1.0.0
+    VERSION 1.1.0
     DESCRIPTION "Check the alignment requirement of a type in CMake"
     LANGUAGES NONE
 )

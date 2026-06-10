@@ -48,12 +48,11 @@
 
 /* Fallback */
 #ifndef ALIGN
-typedef struct { unsigned char c; @type@ d; char e; } ALIGN_type;
 # ifdef offsetof
-#  define ALIGN (offsetof(ALIGN_type, e) - sizeof(@type@))
+struct ALIGN_type { unsigned char c; @type@ d; };
+enum { ALIGN = offsetof(struct ALIGN_type, d) };
 # else
-static ALIGN_type ALIGN_value;
-#  define ALIGN ((unsigned char*)&ALIGN_value.d - &ALIGN_value.c)
+#  error "Missing stddef.h include. `offsetof' is required for fallback."
 # endif
 #endif
 
